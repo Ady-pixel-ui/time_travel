@@ -159,7 +159,7 @@ const DESTINATION_META: Record<DestinationId, { label: string; image: string; co
 
 // ─── Props ───────────────────────────────────────────────────────────
 interface TimeQuizProps {
-  onBookClick: (destinationId: string) => void;
+  onBookClick?: (destinationId: string) => void;
 }
 
 // ─── Composant principal ─────────────────────────────────────────────
@@ -549,7 +549,7 @@ export default function TimeQuiz({ onBookClick }: TimeQuizProps) {
                   {/* Actions */}
                   <div className="flex flex-col sm:flex-row gap-3">
                     <motion.button
-                      onClick={() => onBookClick(result.destination)}
+                      onClick={() => onBookClick?.(result.destination)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="flex-1 py-3.5 bg-gradient-to-r from-gold to-gold-dark text-dark font-bold rounded-xl hover:shadow-lg hover:shadow-gold/30 transition-all text-sm"

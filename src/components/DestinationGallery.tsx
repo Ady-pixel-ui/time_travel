@@ -153,7 +153,7 @@ const destinations: Destination[] = [
 
 // ─── Props ───────────────────────────────────────────────────────────
 interface DestinationGalleryProps {
-  onBookingClick: (destinationId: string) => void;
+  onBookingClick?: (destinationId: string) => void;
 }
 
 // ─── Composant ───────────────────────────────────────────────────────
@@ -175,7 +175,9 @@ export default function DestinationGallery({ onBookingClick }: DestinationGaller
   const handleBookFromModal = (destinationId: string) => {
     handleCloseModal();
     // Petit délai pour que la modale se ferme avant d'ouvrir le booking
-    setTimeout(() => onBookingClick(destinationId), 350);
+    if (onBookingClick) {
+      setTimeout(() => onBookingClick(destinationId), 350);
+    }
   };
 
   return (
